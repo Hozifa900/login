@@ -1,0 +1,22 @@
+.login{
+    position: absolute;
+    background-image:linear-gradient(129.06deg, #AEFB2A -21.26%, #57EBDE 71.47%); 
+    padding:2px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 500px;
+   
+    top: 0px;
+    margin: 10px;
+}
+
+.login-body{
+    margin-top: 50px;
+}
+
+.login-button{
+    background-image:linear-gradient(129.06deg, #AEFB2A -21.26%, #57EBDE 71.47%); 
+    width: 100%;
+    color: white;
+    border:0px;
+}

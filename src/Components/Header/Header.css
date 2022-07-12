@@ -1,0 +1,66 @@
+.header{
+    background-color: #242424;
+    width: 100%;
+    height: 100px;
+}
+.contact-me{
+    background-image:linear-gradient(129.06deg, #AEFB2A -21.26%, #57EBDE 71.47%);   
+height: 50px;
+width: 173px;
+border-radius: 0px;
+padding:1px;
+margin-left: 10px;
+position:absolute;
+top: 30px;
+right: 100px;
+cursor: pointer;
+}
+.contact-text{
+    color: #57EBDE;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+}
+
+.connected-metamask{ 
+height: 50px;
+width: 173px;
+border-radius: 0px;
+padding:1px;
+margin-left: 10px;
+position:absolute;
+top: 66px;
+right: 100px;
+}
+.connected-text{
+    color: white;
+    margin-right: 10px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+}
+
+.back-text{
+    width: 36px;
+height: 19px;
+margin-left: 5px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+color: #969696;
+}
+
+.back-box{
+    position: absolute;
+    top: 85px;
+left: 115px;
+}
