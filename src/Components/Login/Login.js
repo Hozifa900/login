@@ -11,11 +11,20 @@ export default function Login() {
   const [user, setUser, showSignup, setShowSignup, loader, setLoader] =
     useContext(DataContext);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ login_email: "", login_pass: "" });
+
+  // This function to handel a change in field ...........................................................
+  async function handleChange(e) {
+    const data = { ...formData };
+    data[e.target.id] = e.target.value;
+    await setFormData({ ...data });
+    console.log(formData);
+  }
 
   // This function to login using fake auth npm package
   const Login = () => {
-    let email = document.createElement("login-email"),
-      pass = document.createElement("login-password");
+    let email = formData.login_email,
+      pass = formData.login_password;
     if (email === "" || pass === "") {
       alert("Please fill all the fields");
     } else {
@@ -46,7 +55,9 @@ export default function Login() {
               <Col xs={12} md={9}>
                 <Form.Control
                   type="text"
-                  id="login-email"
+                  id="login_email"
+                  value={formData.id}
+                  onChange={(e) => handleChange(e)}
                   aria-describedby="passwordHelpBlock"
                 />
               </Col>
@@ -58,7 +69,9 @@ export default function Login() {
               <Col xs={12} md={9}>
                 <Form.Control
                   type="password"
-                  id="login-password"
+                  id="login_pass"
+                  value={formData.id}
+                  onChange={(e) => handleChange(e)}
                   aria-describedby="passwordHelpBlock"
                 />
               </Col>

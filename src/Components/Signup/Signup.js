@@ -13,16 +13,35 @@ export default function Signup() {
   const [pass, setPass] = React.useState("none");
   const passStyle = { boxShadow: pass };
   const navigate = useNavigate();
+  const [formData, setFormData] = React.useState({
+    signup_email: "",
+    signup_pass: "",
+    signup_name: "",
+    signup_phone: "",
+    signup_repass: "",
+  });
 
-  const handleClose = () => setShowSignup(false);
+  const handleClose = async () => setShowSignup(false);
   const handleShow = () => setShowSignup(true);
-  
+
+  // This function to handel a change in field ...........................................................
+  async function handleChange(e) {
+    const data = { ...formData };
+    data[e.target.id] = e.target.value;
+    await setFormData({ ...data });
+    if (e.target.id === "signup_repass") {
+      CheckPassword();
+    }
+    console.log(formData);
+  }
+
   // This function to create new user using fake auth npm package
   const Signup = () => {
-    let email = document.getElementById("signup-email").value,
-      pass = document.getElementById("signup-password").value,
-      name = document.getElementById("signup-name").value,
-      confirmPass = document.getElementById("signup-confirm-password").value;
+    let email = formData.email,
+      pass = formData.pass,
+      name = formData.name,
+      confirmPass = formData.repass,
+      phone = formData.phone;
     if (email === "" || pass === "" || name === "") {
       alert("Please fill all the fields");
     } else if (pass != confirmPass) {
@@ -45,8 +64,8 @@ export default function Signup() {
 
   //This function to cheek password is it correct or not
   const CheckPassword = () => {
-    let pass = document.getElementById("signup-password").value,
-      confirmPass = document.getElementById("signup-confirm-password").value;
+    let pass = document.getElementById("signup_pass").value,
+      confirmPass = document.getElementById("signup_repass").value;
     if (pass == confirmPass) {
       return setPass("none");
     } else {
@@ -71,7 +90,9 @@ export default function Signup() {
                 <Col xs={12} md={9}>
                   <Form.Control
                     type="text"
-                    id="signup-name"
+                    id="signup_name"
+                    value={formData.id}
+                    onChange={(e) => handleChange(e)}
                     aria-describedby="passwordHelpBlock"
                   />
                 </Col>
@@ -85,7 +106,9 @@ export default function Signup() {
                 <Col xs={12} md={9}>
                   <Form.Control
                     type="text"
-                    id="signup-email"
+                    id="signup_email"
+                    value={formData.id}
+                    onChange={(e) => handleChange(e)}
                     aria-describedby="passwordHelpBlock"
                   />
                 </Col>
@@ -99,7 +122,9 @@ export default function Signup() {
                 <Col xs={12} md={9}>
                   <Form.Control
                     type="text"
-                    id="signup-phone"
+                    id="signup_phone"
+                    value={formData.id}
+                    onChange={(e) => handleChange(e)}
                     aria-describedby="passwordHelpBlock"
                   />
                 </Col>
@@ -111,7 +136,9 @@ export default function Signup() {
                 <Col xs={12} md={9}>
                   <Form.Control
                     type="password"
-                    id="signup-password"
+                    id="signup_pass"
+                    value={formData.id}
+                    onChange={(e) => handleChange(e)}
                     aria-describedby="passwordHelpBlock"
                   />
                 </Col>
@@ -124,11 +151,11 @@ export default function Signup() {
                 </Col>
                 <Col xs={12} md={9}>
                   <Form.Control
-                    onChange={CheckPassword}
+                    onChange={(e) => handleChange(e)}
+                    aria-describedby="passwordHelpBlock"
                     style={passStyle}
                     type="password"
-                    id="signup-confirm-password"
-                    aria-describedby="passwordHelpBlock"
+                    id="signup_repass"
                   />
                 </Col>
               </Row>
